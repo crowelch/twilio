@@ -4,12 +4,7 @@ var twilio = require('twilio');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	var resp = new twilio.TwimlResponse();
-	resp.message('Hey you!');
-	res.writeHead(200, {
-	    'Content-Type':'text/xml'
-	});
-	res.send(resp.toString());
+	res.send('Hi mom!');
 });
 
 router.post('/helloworld', function(req, res, next) {
