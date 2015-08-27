@@ -14,9 +14,7 @@ router.post('/helloworld', function(req, res, next) {
 	var resp = new twilio.TwimlResponse();
 	resp.message('Hey you!');
 
-	res.writeHead(200, {
-	    'Content-Type':'text/xml'
-	});
+	res.type('text/xml');
 	res.send(resp.toString());
 });
 
