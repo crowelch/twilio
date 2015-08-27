@@ -25,4 +25,21 @@ router.post('/helloworld', function(req, res, next) {
 	});
 });
 
+router.post('/interests', function(req, res, next) {
+	console.log(req.body.From);
+	console.dir(req.body);
+
+	var resp = new twilio.TwimlResponse();
+	resp.message('You find that interesting?... Cool!');
+
+	res.type('text/xml');
+	res.send(resp.toString());
+
+	var myDb = new firebase('https://bearcathackers-twilio.firebaseio.com/interests');
+	myDb.set({
+		phone: req.body.From,
+		response: req.body.Body
+	});
+});
+
 module.exports = router;
